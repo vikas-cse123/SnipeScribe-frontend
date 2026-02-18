@@ -3,9 +3,11 @@ import { IoEye, IoEyeOff } from "react-icons/io5";
 import { validateSchema } from "../utils/validateSchema";
 import { signUpSchema } from "../schemas/auth.schema";
 import { toast } from "sonner";
+import { useNavigate } from "react-router";
 import "./SignUp.css";
 
 const SignUp = () => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -71,7 +73,7 @@ const SignUp = () => {
       }
 
       const result = await response.json();
-
+console.log(result);
       if (!response.ok) {
         if (result.errors) {
           const newErrors = {};
@@ -85,11 +87,17 @@ const SignUp = () => {
         return;
       }
 
-      console.log("Redirect to OTP page");
+      if(result.nextStep === "VERIFY_OTP"){
+      navigate("otp",{
+        state:{email:result.data.email}
+      })
+
+
+      }
     } catch (err) {
       toast.error(
         !navigator.onLine
-          ? "You are offline. Check your internet connection."
+          ? "Network error. Please check your connection."
           : "Something went wrong."
       );
     } finally {
