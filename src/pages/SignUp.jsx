@@ -3,7 +3,7 @@ import { IoEye, IoEyeOff } from "react-icons/io5";
 import { validateSchema } from "../utils/validateSchema";
 import { signUpSchema } from "../schemas/auth.schema";
 import { toast } from "sonner";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import "./SignUp.css";
 
 const SignUp = () => {
@@ -206,7 +206,8 @@ console.log(result);
         </form>
 
         <p className="signin-link">
-          Already have an account? <a href="#">Sign in</a>
+          
+          Already have an account? <Link to="/login">Log in</Link>
         </p>
       </div>
     </div>

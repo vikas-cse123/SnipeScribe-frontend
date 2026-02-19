@@ -66,7 +66,7 @@ const Otp = () => {
   };
 
   useEffect(() => {
-    Ï;
+    
     sendOtp();
   }, []);
 

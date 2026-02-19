@@ -9,6 +9,7 @@ import Otp from "./pages/Otp";
 import SignUp from "./pages/SignUp";
 import { Route, Routes } from "react-router";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,6 +19,8 @@ function App() {
       <Toaster theme="dark" position="top-right" />
       <Routes>
        <Route path="/" element={<Home />} />
+       <Route path="/login" element={<Login />} />
+
 
         <Route path="/signup" element={<SignUpLayout />}>
           <Route index element={<SignUp />} />
